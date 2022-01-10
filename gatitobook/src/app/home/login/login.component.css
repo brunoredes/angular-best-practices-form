@@ -1,0 +1,12 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-top: 10px;
+}
+
+.form-group:nth-child(2) {
+    margin-bottom: 10px;
+}
