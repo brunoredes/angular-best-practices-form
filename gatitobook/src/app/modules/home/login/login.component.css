@@ -1,6 +1,8 @@
 form {
     display: flex;
     flex-direction: column;
+    margin-right: 1rem;
+    width: 480px;
 }
 
 .form-group {

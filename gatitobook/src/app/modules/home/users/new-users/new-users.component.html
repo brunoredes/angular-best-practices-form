@@ -1,0 +1,35 @@
+<h4 class="text-center mt-3">Registre-se e mostre seu pet ao mundo</h4>
+
+<form method="post" class="form mt-4">
+  <fieldset class="fieldset">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="fullName">Nome completo</label>
+      <input type="text" name="fullName" id="fullName" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="user">Usuário</label>
+      <input type="text" name="user" id="user" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="password">Senha</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="form-control"
+      />
+    </div>
+    <button class="btn btn-primary btn-block mt-2">Cadastrar</button>
+  </fieldset>
+</form>
+
+<p>
+  Já é um usuário?
+  <a [routerLink]="['']" routerLinkActive="router-link-active"
+    >Entre na sua conta</a
+  >
+</p>
