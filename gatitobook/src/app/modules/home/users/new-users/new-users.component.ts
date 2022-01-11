@@ -1,9 +1,11 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { lowerCaseValidator } from 'src/app/shared/helpers/validators';
+import { lowerCaseValidator, userEqualPasswordValidator } from 'src/app/shared/helpers/validators';
 import { User } from './../../../../core/interfaces/user';
 import { NewUsersService } from './new-users.service';
+import { UserExistsService } from './user-exists.service';
+
 
 
 @Component({
@@ -14,21 +16,34 @@ import { NewUsersService } from './new-users.service';
 export class NewUsersComponent implements OnInit {
 
   public newUserForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private userService: NewUsersService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: NewUsersService,
+    private userExists: UserExistsService,
+    private route: Router
+  ) { }
 
   ngOnInit(): void {
     this.newUserForm = this.formBuilder.group({
       email: ['', [Validators.email, Validators.required]],
       fullName: ['', [Validators.required, Validators.minLength(4)]],
-      userName: ['', [lowerCaseValidator]],
-      password: ['', [Validators.minLength(10)]]
-    });
+      userName: ['', [lowerCaseValidator], [this.userExists.userExists()]],
+      password: ['', [Validators.minLength(12), Validators.required]]
+    },
+      { validators: [userEqualPasswordValidator] }
+    );
   }
 
   public createUser(): void {
-    const newUser: User = this.newUserForm.getRawValue() as User;
-    console.log(newUser);
-    // this.userService.newUser(newUser);
+    if (this.newUserForm.valid) {
+      const newUser: User = this.newUserForm.getRawValue() as User;
+      this.userService.newUser(newUser).subscribe(
+        (_) => this.route.navigate(['']),
+        (error) => console.error(error)
+      );
+
+    }
+
   }
 
 }

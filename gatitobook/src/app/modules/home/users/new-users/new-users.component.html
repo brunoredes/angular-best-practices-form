@@ -63,6 +63,10 @@
         *ngIf="newUserForm.get('userName')?.errors?.['lowercase'] && newUserForm.get('userName')?.touched"
         message="usuário deve conter apenas letras minúsculas"
       ></app-message>
+      <app-message
+        message="Usuário já existe"
+        *ngIf="newUserForm.get('userName')?.errors?.['userExists']"
+      ></app-message>
     </div>
     <div class="form-group">
       <label for="password">Senha</label>
@@ -73,9 +77,27 @@
         class="form-control"
         formControlName="password"
       />
-      <app-message class="validation-message"></app-message>
+      <app-message
+        class="validation-message"
+        message="Senha deve ser diferente do nome de usuário"
+        *ngIf="newUserForm.errors?.['passwordEqualUser']"
+      ></app-message>
+      <app-message
+        class="validation-message"
+        message="Obrigatório digitar uma senha"
+        *ngIf="newUserForm.get('password')?.touched && newUserForm.get('password')?.errors?.['required']"
+      ></app-message>
+      <app-message
+        class="validation-message"
+        message="A senha precisa ter pelo menos 12 dígitos"
+        *ngIf="newUserForm.get('password')?.errors?.['minlength']"
+      ></app-message>
     </div>
-    <button type="submit" class="btn btn-primary btn-block mt-2">
+    <button
+      type="submit"
+      class="btn btn-primary btn-block mt-2"
+      [disabled]="!newUserForm.valid"
+    >
       Cadastrar
     </button>
   </fieldset>

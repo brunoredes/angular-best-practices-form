@@ -8,10 +8,14 @@ import { environment } from './../../../../../environments/environment';
   providedIn: 'any'
 })
 export class NewUsersService {
-  private readonly url = `${environment.url}/user/signup`;
+  private readonly url = environment.url;
   constructor(private http: HttpClient) { }
 
   public newUser(user: User): Observable<User> {
-    return this.http.post<User>(this.url, user);
+    return this.http.post<User>(`${this.url}/user/signup`, user);
+  }
+
+  public getDataFromUser(userName: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/user/exists/${userName}`);
   }
 }
