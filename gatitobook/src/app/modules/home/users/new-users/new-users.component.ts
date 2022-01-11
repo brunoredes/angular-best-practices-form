@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from './../../../../core/interfaces/user';
+import { NewUsersService } from './new-users.service';
+
+
 
 @Component({
   selector: 'app-new-users',
@@ -7,9 +12,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewUsersComponent implements OnInit {
 
-  constructor() { }
+  public newUserForm!: FormGroup;
+  constructor(private formBuilder: FormBuilder, private userService: NewUsersService) { }
 
   ngOnInit(): void {
+    this.newUserForm = this.formBuilder.group({
+      email: ['', [Validators.email, Validators.required]],
+      fullName: ['', [Validators.required, Validators.minLength(4)]],
+      userName: ['', ],
+      password: ['', [Validators.minLength(10)]]
+    });
+  }
+
+  public createUser(): void {
+    const newUser: User = this.newUserForm.getRawValue() as User;
+    console.log(newUser);
+    // this.userService.newUser(newUser);
   }
 
 }

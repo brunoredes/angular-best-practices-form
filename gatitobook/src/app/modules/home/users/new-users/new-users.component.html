@@ -1,18 +1,61 @@
 <h4 class="text-center mt-3">Registre-se e mostre seu pet ao mundo</h4>
 
-<form method="post" class="form mt-4">
+<form
+  method="post"
+  class="form mt-4"
+  [formGroup]="newUserForm"
+  (ngSubmit)="createUser()"
+>
   <fieldset class="fieldset">
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" name="email" id="email" class="form-control" />
+      <input
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="example@mail.com"
+      />
+      <app-message class="validation-message"
+        message="Email obrigatório"
+        *ngIf="newUserForm.get(['email'])?.errors?.['required'] && newUserForm.get('email')?.touched"
+      ></app-message>
+      <app-message class="validation-message"
+        *ngIf="newUserForm.get('email')?.errors?.['email']
+        &&
+        newUserForm.get('email')?.touched
+        "
+        message="Email no formato incorreto"
+      ></app-message>
     </div>
     <div class="form-group">
       <label for="fullName">Nome completo</label>
-      <input type="text" name="fullName" id="fullName" class="form-control" />
+      <input
+        type="text"
+        name="fullName"
+        id="fullName"
+        class="form-control"
+        formControlName="fullName"
+      />
+      <app-message class="validation-message"
+        *ngIf="
+          newUserForm.get('fullName')?.errors &&
+          newUserForm.get('fullName')?.touched
+        "
+        message="Nome incorreto"
+      ></app-message>
     </div>
     <div class="form-group">
-      <label for="user">Usuário</label>
-      <input type="text" name="user" id="user" class="form-control" />
+      <label for="userName">Usuário</label>
+      <input
+        type="text"
+        name="userName"
+        id="userName"
+        class="form-control"
+        formControlName="userName"
+      />
+      <app-message class="validation-message"></app-message>
     </div>
     <div class="form-group">
       <label for="password">Senha</label>
@@ -21,15 +64,19 @@
         name="password"
         id="password"
         class="form-control"
+        formControlName="password"
       />
+      <app-message class="validation-message"></app-message>
     </div>
-    <button class="btn btn-primary btn-block mt-2">Cadastrar</button>
+    <button type="submit" class="btn btn-primary btn-block mt-2">
+      Cadastrar
+    </button>
   </fieldset>
 </form>
 
 <p>
   Já é um usuário?
-  <a [routerLink]="['']" routerLinkActive="router-link-active"
+  <a [routerLink]="['home']" routerLinkActive="router-link-active"
     >Entre na sua conta</a
   >
 </p>

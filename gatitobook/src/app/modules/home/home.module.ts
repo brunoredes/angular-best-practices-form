@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { SharedModule } from './../../shared/shared.module';
@@ -21,7 +21,8 @@ import { NewUsersComponent } from './users/new-users/new-users.component';
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   exports: [HomeComponent]
 })
