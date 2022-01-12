@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { lowerCaseValidator, userEqualPasswordValidator } from '@shared/helpers/validators';
-import { NewUser } from '@shared/interfaces';
+import { lowerCaseValidator, userEqualPasswordValidator } from './helpers/validators';
+import { NewUser } from '@core/interfaces';
 import { NewUsersService } from './new-users.service';
 import { UserExistsService } from './user-exists.service';
 

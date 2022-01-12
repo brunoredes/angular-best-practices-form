@@ -1,9 +1,9 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { User } from '@shared/interfaces/user';
+import { User } from '@core/interfaces/user';
 import { environment } from '@env';
-import { UserService } from './../http/users/user.service';
+import { UserService } from '../../modules/home/users/user.service';
 
 
 

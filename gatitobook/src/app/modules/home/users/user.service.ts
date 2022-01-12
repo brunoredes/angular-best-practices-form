@@ -3,7 +3,7 @@ import jwt_decode from 'jwt-decode';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { TokenService } from '@core/authentication/helpers/token.service';
-import { User } from '@shared/interfaces';
+import { User } from '@core/interfaces';
 
 
 @Injectable({
