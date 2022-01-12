@@ -1,8 +1,9 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { lowerCaseValidator, userEqualPasswordValidator } from 'src/app/shared/helpers/validators';
-import { User } from './../../../../core/interfaces/user';
+import { Router } from '@angular/router';
+
+import { lowerCaseValidator, userEqualPasswordValidator } from '@shared/helpers/validators';
+import { NewUser } from '@shared/interfaces';
 import { NewUsersService } from './new-users.service';
 import { UserExistsService } from './user-exists.service';
 
@@ -36,7 +37,7 @@ export class NewUsersComponent implements OnInit {
 
   public createUser(): void {
     if (this.newUserForm.valid) {
-      const newUser: User = this.newUserForm.getRawValue() as User;
+      const newUser: NewUser = this.newUserForm.getRawValue() as NewUser;
       this.userService.newUser(newUser).subscribe(
         (_) => this.route.navigate(['']),
         (error) => console.error(error)
