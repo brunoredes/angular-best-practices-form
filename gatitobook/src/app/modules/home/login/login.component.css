@@ -12,3 +12,7 @@ form {
 .form-group:nth-child(2) {
     margin-bottom: 10px;
 }
+
+p {
+    display: inline-flex;
+}

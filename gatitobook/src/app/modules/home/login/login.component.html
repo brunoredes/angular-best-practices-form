@@ -1,49 +1,55 @@
 <h4 class="text-center">Login</h4>
-
-<form class="form mt-4" method="post" (ngSubmit)="login()" #loginForm="ngForm">
-  <div class="form-group">
-    <label for="name">Nome</label>
-    <input
-      type="text"
-      class="form-control"
-      id="name"
-      [(ngModel)]="user"
-      name="user"
-      #userInput="ngModel"
-      required
-    />
-    <app-message
-      message="Nome do usuário é necessário"
-      *ngIf="userInput.invalid && userInput.touched"
-    ></app-message>
-  </div>
-  <div class="form-group">
-    <label for="password">Senha</label>
-    <input
-      type="password"
-      id="password"
-      class="form-control"
-      [(ngModel)]="password"
-      name="password"
-      #passwordInput="ngModel"
-      required
-    />
-    <app-message
-      *ngIf="passwordInput.invalid && passwordInput.touched"
-      message="Senha é obrigatória"
-    ></app-message>
-  </div>
-  <button
-    type="submit"
-    class="btn btn-primary btn-block"
-    [disabled]="!loginForm.form.valid"
+<section>
+  <form
+    class="form mt-4"
+    method="post"
+    (ngSubmit)="login()"
+    #loginForm="ngForm"
   >
-    Login
-  </button>
-</form>
-<p>
-  Não é um usuário?
-  <a [routerLink]="['new/user']" routerLinkActive="router-link-active"
-    >Cadastre-se</a
-  >
-</p>
+    <div class="form-group">
+      <label for="name">Nome</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        [(ngModel)]="user"
+        name="user"
+        #userInput="ngModel"
+        required
+      />
+      <app-message
+        message="Nome do usuário é necessário"
+        *ngIf="userInput.invalid && userInput.touched"
+      ></app-message>
+    </div>
+    <div class="form-group">
+      <label for="password">Senha</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        [(ngModel)]="password"
+        name="password"
+        #passwordInput="ngModel"
+        required
+      />
+      <app-message
+        *ngIf="passwordInput.invalid && passwordInput.touched"
+        message="Senha é obrigatória"
+      ></app-message>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary btn-block"
+      [disabled]="!loginForm.form.valid"
+    >
+      Login
+    </button>
+  </form>
+  <p>
+    Não é um usuário?
+    <a [routerLink]="['new/user']" routerLinkActive="router-link-active"
+      >Cadastre-se</a
+    >
+  </p>
+</section>
