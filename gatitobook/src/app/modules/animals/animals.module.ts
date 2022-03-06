@@ -7,19 +7,16 @@ import { AnimalsListComponent } from './animals-list/animals-list.component';
 import { AnimalComponent } from './components/animal/animal.component';
 import { AnimalsGridComponent } from './animals-grid/animals-grid.component';
 import { AnimalsDetailsComponent } from './animals-details/animals-details.component';
-
+import { AnimalsService } from './animals.service';
 
 @NgModule({
   declarations: [
     AnimalsListComponent,
     AnimalComponent,
     AnimalsGridComponent,
-    AnimalsDetailsComponent
+    AnimalsDetailsComponent,
   ],
-  imports: [
-    CommonModule,
-    AnimalsRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, AnimalsRoutingModule, SharedModule],
+  providers: [AnimalsService],
 })
-export class AnimalsModule { }
+export class AnimalsModule {}
