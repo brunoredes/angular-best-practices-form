@@ -1,4 +1,3 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, switchMap, tap } from 'rxjs';
 import { AnimalPhotoComment, AnimalPhotoComments } from './comments';
@@ -12,12 +11,8 @@ import { CommentsService } from './comments.service';
 export class CommentsComponent implements OnInit {
   comments$!: Observable<AnimalPhotoComments>;
   @Input() animalId!: number;
-  public commentForm!: FormGroup;
 
-  constructor(
-    private commentService: CommentsService,
-    private formBuilder: FormBuilder
-  ) {}
+  constructor(private commentService: CommentsService) {}
 
   ngOnInit(): void {
     this.comments$ = this.commentService.getComment(this.animalId);

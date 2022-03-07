@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Animal } from '@shared/models/interfaces';
 import { Observable } from 'rxjs';
-import { AnimalsService } from './../animals.service';
+import { AnimalsService } from '../../animals.service';
 
 @Component({
   selector: 'app-animals-details',
