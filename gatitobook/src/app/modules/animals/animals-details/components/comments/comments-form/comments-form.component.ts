@@ -23,7 +23,7 @@ export class CommentsFormComponent implements OnInit {
 
   public sendForm(): void {
     const comment = this.commentForm.get('comment')?.value ?? '';
-    this.commentForm.reset();
     this.formData.emit({ text: comment });
+    this.commentForm.reset();
   }
 }
