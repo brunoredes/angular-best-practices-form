@@ -20,7 +20,7 @@ api.add = async (req, res) => {
         const commentId = await commentDao.add(commentText, photo.id, req.user.id);
         const comment = await commentDao.findById(commentId);
         console.log(`Comment added`, comment);
-        res.json(comment);
+        return res.json(comment);
     } else {
         res.status(403).json({ message: 'Forbiden'});
     }
@@ -31,7 +31,7 @@ api.listAllFromPhoto = async (req, res) => {
     const { photoId } = req.params;
     console.log(`Get comments from photo ${photoId}`);
     const comments = await new CommentDao(req.db).listAllFromPhoto(photoId);
-    res.json(comments);
+    return res.json(comments);
 }
 
 module.exports = api;
