@@ -1,0 +1,16 @@
+<div class="mt-4">
+  <form [formGroup]="commentForm" (ngSubmit)="sendForm()">
+    <div class="input-group">
+      <textarea class="form-control" formControlName="comment"></textarea>
+      <div class="input-group-append">
+        <button [disabled]="commentForm.invalid" class="btn-primary pull-left">
+          Publicar
+        </button>
+      </div>
+    </div>
+    <app-message
+      *ngIf="!!commentForm.get('comment')?.errors?.['maxlength']"
+      message="Tamanho máximo de 300 caracteres"
+    ></app-message>
+  </form>
+</div>

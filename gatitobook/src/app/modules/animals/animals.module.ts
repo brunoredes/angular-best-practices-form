@@ -10,6 +10,7 @@ import { AnimalsDetailsComponent } from './animals-details/animals-details.compo
 import { AnimalsService } from './animals.service';
 import { CommentsComponent } from './animals-details/components/comments/comments.component';
 import { CommentsService } from './animals-details/components/comments/comments.service';
+import { CommentsFormComponent } from './animals-details/components/comments/comments-form/comments-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CommentsService } from './animals-details/components/comments/comments.
     AnimalsGridComponent,
     AnimalsDetailsComponent,
     CommentsComponent,
+    CommentsFormComponent,
   ],
   imports: [CommonModule, AnimalsRoutingModule, SharedModule],
   providers: [AnimalsService, CommentsService],
