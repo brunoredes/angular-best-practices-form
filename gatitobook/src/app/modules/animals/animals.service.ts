@@ -29,7 +29,7 @@ export class AnimalsService {
   public like(id: number): Observable<boolean> {
     return this.http
       .post<boolean>(
-        `${this.url}/photos/${id}/likes`,
+        `${this.url}/photos/${id}/like`,
         {},
         { observe: 'response' }
       )
