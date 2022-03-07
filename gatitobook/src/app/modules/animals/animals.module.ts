@@ -8,6 +8,8 @@ import { AnimalComponent } from './components/animal/animal.component';
 import { AnimalsGridComponent } from './animals-grid/animals-grid.component';
 import { AnimalsDetailsComponent } from './animals-details/animals-details.component';
 import { AnimalsService } from './animals.service';
+import { CommentsComponent } from './animals-details/components/comments/comments.component';
+import { CommentsService } from './animals-details/components/comments/comments.service';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,9 @@ import { AnimalsService } from './animals.service';
     AnimalComponent,
     AnimalsGridComponent,
     AnimalsDetailsComponent,
+    CommentsComponent,
   ],
   imports: [CommonModule, AnimalsRoutingModule, SharedModule],
-  providers: [AnimalsService],
+  providers: [AnimalsService, CommentsService],
 })
 export class AnimalsModule {}
