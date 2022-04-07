@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './../../shared/shared.module';
@@ -15,7 +16,6 @@ import { AnimalsRoutingModule } from './animals-routing.module';
 import { AnimalsService } from './animals.service';
 import { AnimalComponent } from './components/animal/animal.component';
 
-
 @NgModule({
   declarations: [
     AnimalsListComponent,
@@ -28,6 +28,6 @@ import { AnimalComponent } from './components/animal/animal.component';
     AnimalsGridPresentationComponent,
   ],
   imports: [CommonModule, AnimalsRoutingModule, SharedModule],
-  providers: [AnimalsService, CommentsService],
+  providers: [AnimalsService, CommentsService, ToastrService],
 })
 export class AnimalsModule {}

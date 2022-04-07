@@ -1,18 +1,16 @@
 <div class="row">
-  <div class="col-4">
-    <a [routerLink]="['/animals', detail.id]">
-      <app-card>
-        <app-animal
-          [url]="detail.url"
-          [description]="detail.description"
-        ></app-animal>
-        <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2">
-          {{ detail.likes }}
-        </i>
-        <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2">
-          {{ detail.comments }}
-        </i>
-      </app-card>
-    </a>
-  </div>
+  <a [routerLink]="['/animals', detail.id]">
+    <app-card>
+      <app-animal
+        [url]="detail.url"
+        [description]="detail.description"
+      ></app-animal>
+      <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2">
+        {{ detail.likes }}
+      </i>
+      <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2">
+        {{ detail.comments }}
+      </i>
+    </app-card>
+  </a>
 </div>

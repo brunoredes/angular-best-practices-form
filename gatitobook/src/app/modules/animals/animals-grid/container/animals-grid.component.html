@@ -1,7 +1,9 @@
 <app-animals-grid-presentation
   *ngIf="!animals.length"
 ></app-animals-grid-presentation>
-<app-animals-grid-list
-  *ngFor="let animal of animals"
-  [detail]="animal"
-></app-animals-grid-list>
+<div class="presentation">
+  <app-animals-grid-list
+    *ngFor="let animal of animals"
+    [detail]="animal"
+  ></app-animals-grid-list>
+</div>

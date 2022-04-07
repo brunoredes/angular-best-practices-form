@@ -1,6 +1,5 @@
 const express = require('express')
     , app = express()
-    , bodyParser = require('body-parser')
     , path = require('path')
     , cors = require('cors')
     , db = require('./database')
@@ -41,7 +40,7 @@ const corsOptions = {
 
 app.use(express.static('uploads'));
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use((req, res, next) => {
     req.db = db;

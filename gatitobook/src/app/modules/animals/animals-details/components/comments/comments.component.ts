@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, switchMap, tap } from 'rxjs';
 import { AnimalPhotoComment, AnimalPhotoComments } from './comments';
 import { CommentsService } from './comments.service';
@@ -12,7 +13,7 @@ export class CommentsComponent implements OnInit {
   comments$!: Observable<AnimalPhotoComments>;
   @Input() animalId!: number;
 
-  constructor(private commentService: CommentsService) {}
+  constructor(private commentService: CommentsService, private snack: ToastrService) {}
 
   ngOnInit(): void {
     this.comments$ = this.commentService.getComment(this.animalId);
@@ -24,7 +25,7 @@ export class CommentsComponent implements OnInit {
       .pipe(
         switchMap(() => this.commentService.getComment(this.animalId)),
         tap(() => {
-          alert('Salvo com sucesso');
+          this.snack.success('Salvo com sucesso.', 'Comentário adicionado');
         })
       );
   }

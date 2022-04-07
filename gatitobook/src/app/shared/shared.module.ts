@@ -1,24 +1,17 @@
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import * as fromComponents from './components';
-import { CardComponent } from './components/card/card.component';
-
 
 @NgModule({
-  declarations: [...fromComponents.components, CardComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule
-  ],
+  declarations: [...fromComponents.components],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   exports: [
     FormsModule,
     ReactiveFormsModule,
-    ...fromComponents.components
-  ]
+    ...fromComponents.components,
+  ],
+  providers: [],
 })
-export class SharedModule { }
+export class SharedModule {}
