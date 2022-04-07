@@ -15,11 +15,14 @@ export class AnimalComponent implements OnInit {
       this.originalUrl = url :
       this.originalUrl = `${API}/imgs/${url}`
   };
+
   public get url(): string {
     return this.originalUrl;
   }
+
   @Input() public description: any;
   private originalUrl = '';
+
   constructor() { }
 
   ngOnInit(): void {

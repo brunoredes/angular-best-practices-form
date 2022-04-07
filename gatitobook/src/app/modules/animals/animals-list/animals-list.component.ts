@@ -1,28 +1,20 @@
-import { switchMap, Observable } from 'rxjs';
-import { AnimalsService } from './../animals.service';
-import { UserService } from './../../home/users/user.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Animals } from '@shared/models/types';
-
 
 @Component({
   selector: 'app-animals-list',
   templateUrl: './animals-list.component.html',
-  styleUrls: ['./animals-list.component.css']
+  styleUrls: ['./animals-list.component.css'],
 })
 export class AnimalsListComponent implements OnInit {
+  public animals!: Animals;
 
-  public animals!: Observable<Animals>;
-
-  constructor(private userService: UserService, private animalsService: AnimalsService) { }
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.animals = this.userService.returnUser().pipe(
-      switchMap((user) => {
-        const username = user.name ?? '';
-        return this.animalsService.userList(username);
-      })
-    );
+    this.activatedRoute.params.subscribe((params: any) => {
+      this.animals = this.activatedRoute.snapshot.data['animals'];
+    });
   }
-
 }
