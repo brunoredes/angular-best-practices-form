@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   Resolve,
-  RouterStateSnapshot
+  RouterStateSnapshot,
 } from '@angular/router';
 import { User } from '@models/interfaces';
 import { Animals } from '@models/types';

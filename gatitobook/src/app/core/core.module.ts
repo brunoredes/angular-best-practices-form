@@ -1,3 +1,4 @@
+import { MenuModule } from './../modules/menu/menu.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -10,7 +11,7 @@ import { AuthInterceptor } from './authentication/auth.interceptor';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
-  imports: [CommonModule, SharedModule, HttpClientModule, RouterModule],
+  imports: [CommonModule, SharedModule, HttpClientModule, RouterModule, MenuModule],
   exports: [HeaderComponent, FooterComponent],
   providers: [
     {

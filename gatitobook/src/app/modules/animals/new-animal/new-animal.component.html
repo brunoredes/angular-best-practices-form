@@ -1,0 +1,72 @@
+<section class="container">
+  <form [formGroup]="animalForm" (ngSubmit)="upload()">
+    <div class="col-md-6 text-center">
+      <div class="form-group" *ngIf="!previewPhotoURL; else previewImage">
+        <button
+          type="button"
+          (click)="fileInput.click()"
+          class="btn btn-primary"
+        >
+        Voltar
+          <i class="fa fa-image fa-4x align-middle"></i>
+        </button>
+        <input
+          type="file"
+          hidden
+          formControlName="file"
+          accept="image/*"
+          (change)="saveFile($event.target)"
+          #fileInput
+        />
+        <app-message
+          message="Por favor selecione a foto"
+          *ngIf="!!animalForm.get('file')?.errors?.['required']"
+        ></app-message>
+      </div>
+      <ng-template #previewImage>
+        <app-animal [url]="previewPhotoURL" title="Preview"></app-animal>
+      </ng-template>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="description">Descrição do animal</label>
+        <textarea
+          formControlName="description"
+          class="form-control form-control-sm"
+          id="description"
+          placeholder="Meu animal é da cor branca, com olhos pretos..."
+          tabindex="0"
+        ></textarea>
+        <app-message
+          message="Tamanho máximo do campo é de 300 caracteres"
+          *ngIf="!!animalForm.get('description')?.errors?.['maxlength']"
+        ></app-message>
+      </div>
+      <div class="form-group">
+        <label for="allowComments"
+          >Permite comentário
+          <input
+            type="checkbox"
+            formControlName="allowComments"
+            id="allowComments"
+          />
+        </label>
+      </div>
+      <div class="" *ngIf="!percentage; else uploadDiv">
+        <button
+          [disabled]="animalForm.invalid"
+          type="submit"
+          class="btn btn-primary btn-block"
+        >Enviar</button>
+        <a routerLink="" class="btn btn-secondary btn-block"></a>
+      </div>
+      <ng-template #uploadDiv>
+          <div class="text-center display-4">
+            <i class="fa fa-spinner fa-spin fa-3x"></i>
+            Carregando imagem: {{percentage}}%
+          </div>
+          <progress max="100" [value]="percentage">{{percentage}}%</progress>
+      </ng-template>
+    </div>
+  </form>
+</section>

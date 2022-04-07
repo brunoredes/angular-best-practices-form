@@ -15,6 +15,7 @@ import { AnimalsListComponent } from './animals-list/animals-list.component';
 import { AnimalsRoutingModule } from './animals-routing.module';
 import { AnimalsService } from './animals.service';
 import { AnimalComponent } from './components/animal/animal.component';
+import { NewAnimalComponent } from './new-animal/new-animal.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AnimalComponent } from './components/animal/animal.component';
     CommentsFormComponent,
     AnimalsGridListComponent,
     AnimalsGridPresentationComponent,
+    NewAnimalComponent,
   ],
   imports: [CommonModule, AnimalsRoutingModule, SharedModule],
   providers: [AnimalsService, CommentsService, ToastrService],
